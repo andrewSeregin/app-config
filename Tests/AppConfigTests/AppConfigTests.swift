@@ -13,13 +13,9 @@ final class AppConfigTests: XCTestCase {
         let key_2Value = rawConfig[keyPath: \.key_2] as? Int
         let key_3Value = rawConfig[keyPath: \.key_3] as? Double
         
-        do {
-            try XCTAssertTrue(XCTUnwrap(key_1Value))
-            try XCTAssertEqual(XCTUnwrap(key_2Value), 1)
-            try XCTAssertEqual(XCTUnwrap(key_3Value), 2.0)
-        } catch {
-            XCTFail(error.localizedDescription)
-        }
+        XCTAssertTrue(try XCTUnwrap(key_1Value))
+        XCTAssertEqual(try XCTUnwrap(key_2Value), 1)
+        XCTAssertEqual(try XCTUnwrap(key_3Value), 2.0)
     }
 }
 
